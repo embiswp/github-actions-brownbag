@@ -3,11 +3,11 @@ name: "pre-release"
 on:
   push:
     branches:
-      - "prod"
+      - "main"
 
 jobs:
-  release:
-    name: "Release"
+  pre-release:
+    name: "Pre Release"
     runs-on: "ubuntu-latest"
 
     steps:
@@ -21,9 +21,9 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ env.GITHUB_SHA }}"
-          prerelease: false
-          title: "Production Build"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
           files: |
             README.md
             *.js
